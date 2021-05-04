@@ -1,21 +1,6 @@
 <template>
   <div class="vc-select">
-    <select v-bind="$attrs" @change="$emit('input', $event.target.value)">
-      <option
-        v-for="option in options"
-        :key="option.value"
-        :value="option.value"
-        :disabled="option.disabled"
-        >{{ option.label }}</option
-      >
-    </select>
-    <div class="vc-select-arrow">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-        <path
-          d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-        />
-      </svg>
-    </div>
+    <input v-bind="$attrs" @input="$emit('input', $event.target.value)">
   </div>
 </template>
 
@@ -31,7 +16,7 @@ export default {
 <style lang="postcss" scoped>
 .vc-select {
   position: relative;
-  & select {
+  & input {
     flex-grow: 1;
     display: block;
     appearance: none;
@@ -77,7 +62,7 @@ export default {
   }
 }
 .vc-is-dark {
-  & select {
+  & input {
     background: var(--gray-700);
     color: var(--gray-100);
     border-color: var(--gray-700);
